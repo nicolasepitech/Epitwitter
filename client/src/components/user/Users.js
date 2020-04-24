@@ -1,13 +1,11 @@
-import React, { useState, useRef, useEffect, Component } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Nav, Button, Container, Form } from "react-bootstrap";
-import ListPost from "../posts/ListPost";
+import listUsers from "../user/listUsers";
 import "./blog.scss";
-import StarRating from 'react-bootstrap-star-rating';
-import { render } from 'react-dom';
 
-const Blog = ({ posts, auth }) => {
+const Users = ({ users, auth }) => {
    const inputRef = useRef(null);
    const [search, setSearch] = useState("");
    const [display, setDisplay] = useState(false);
@@ -19,9 +17,10 @@ const Blog = ({ posts, auth }) => {
    // setting no post found after waiting for a second
    useEffect(() => {
       setTimeout(() => {
-         if (posts.length === 0) setDisplay(true);
+         if (users === 0) setDisplay(true);
       }, 1000);
-   }, [posts]);
+   }, [users]);
+
    return (
       <React.Fragment>
          <div className="mx-3">
@@ -37,30 +36,21 @@ const Blog = ({ posts, auth }) => {
                   <Form.Group controlId="searchBar">
                      <Form.Control
                         type="text"
-                        placeholder="Search Post..."
+                        placeholder="Lalala"
                         style={{ height: 40 }}
                         ref={inputRef}
                         onChange={handleChange}
                      />
                   </Form.Group>
-                 
-   
                </Form>
             </Nav>
          </div>
-         <div>     <StarRating
-         defaultValue={5}
-         min={0}
-         max={10}
-         step={0.5} /></div>
-         
-         {posts.length > 0 ? (
-            <ListPost
-               posts={posts.filter(post =>
-                  post.title.toLowerCase().includes(search)
+         {users > 0 ? (
+            <listUsers
+               users={users.filter(user =>
+                  user.title.toLowerCase().includes(search)
                )}
             />
-         
          ) : (
             display && (
                <Container
@@ -76,11 +66,9 @@ const Blog = ({ posts, auth }) => {
    );
 };
 
-
-
-Blog.propTypes = {
+Users.propTypes = {
    auth: PropTypes.bool.isRequired,
    posts: PropTypes.array.isRequired
 };
 
-export default Blog;
+export default Users;

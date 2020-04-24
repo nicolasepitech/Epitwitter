@@ -24,9 +24,13 @@ const PostForm = ({ post, onChange, onBlur, loading, onSubmit }) => {
                         error: errors.title
                      }}
                   />
-                  <Textarea
+                  <textArea
+                     class="form-control"
+                     id="postbody"
                      name="body"
-                     placeholder="Write your post here..."
+                     style={{ minHeight: 90 }}
+                     maxLength="140"
+                     placeholder="Your text here.."
                      value={body}
                      onChange={onChange}
                      onBlur={onBlur}

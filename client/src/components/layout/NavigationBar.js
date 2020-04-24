@@ -14,14 +14,47 @@ const Navigationbar = ({ auth, onClick }) => (
       <Link to="/blog">
          <Navbar.Brand>
             <img
-               src="https://react-bootstrap.github.io/logo.svg"
-               style={{ height: 30, width: 30 }}
+               src="https://newsroom.ionis-group.com/wp-content/uploads/2019/09/CODING_ACADEMY_LOGO_BLANC.png"
+               style={{ height: 30, width: 90 }}
                className="d-inline-block align-top"
                alt=""
             />
-            {" Bloggy "}
+      
+            {" Epitweet "}
          </Navbar.Brand>
       </Link>
+     
+   <Nav className="ml-auto">
+         {auth ? (
+            <Link to="/profil">
+               <Navbar.Brand>
+                  <div className="mr-sm-2">Profile</div>
+               </Navbar.Brand>
+          </Link>
+         ): (
+       
+               <Navbar.Brand>
+            
+               </Navbar.Brand>
+         )}
+   </Nav>
+  
+   <Nav className="ml-auto">
+         {auth ? (
+            <Link to="/users">
+               <Navbar.Brand>
+                  <div className="mr-sm-2">Membres</div>
+               </Navbar.Brand>
+            </Link>
+         ): (
+            <Link to="/profile">
+               <Navbar.Brand>
+            
+               </Navbar.Brand>
+            </Link>
+         )}
+   </Nav>
+
       <Nav className="ml-auto">
          {auth ? (
             <Link to="/logout">

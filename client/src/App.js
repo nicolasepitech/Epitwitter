@@ -5,9 +5,12 @@ import store from "./store";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
-
+import StarRating from 'react-bootstrap-star-rating';
+import { render } from 'react-dom';
 import LoginPage from "./containers/auth/LoginPage";
 import SignUpPage from "./containers/auth/SignUpPage";
+
+import ProfilPage from "./containers/ProfilPage"
 
 import ProgressBar from "./containers/layout/ProgressBar";
 import Navbar from "./containers/layout/Navbar";
@@ -18,6 +21,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 import ViewPostPage from "./containers/posts/ViewPostPage";
 import CreatePostPage from "./containers/posts/CreatePostPage";
 import UpdatePostPage from "./containers/posts/UpdatePostPage";
+import UsersPage from "./containers/UsersPage";
 
 if (localStorage.jwtToken) {
    const token = localStorage.jwtToken;
@@ -41,7 +45,8 @@ const App = () => {
                <Route path="/" exact component={Landing} />
                <Route path="/login" component={LoginPage} />
                <Route path="/signup" component={SignUpPage} />
-               <PrivateRoute exact path="/blog" component={BlogPage} />
+               <PrivateRoute exact path="/blog" component={BlogPage}/>   
+   
                <PrivateRoute
                   exact
                   path="/blog/post/create"
@@ -51,6 +56,16 @@ const App = () => {
                   exact
                   path="/blog/post/update/:id"
                   component={UpdatePostPage}
+               />
+                 <PrivateRoute
+                  exact
+                  path="/profil"
+                  component={ProfilPage}
+               />
+                 <PrivateRoute
+                  exact
+                  path="/users"
+                  component={UsersPage}
                />
                <Route exact path="/blog/post/:id" component={ViewPostPage} />
                <Route path="/blog/:author" component={BlogPage} />
