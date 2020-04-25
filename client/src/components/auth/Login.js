@@ -78,9 +78,9 @@ const Login = ({ message, loading, user, onChange, onBlur, onSubmit }) => {
                            Don't have an account?{" "}
                            <Link to={"/signup"}>SignUp</Link>
                         </Card.Text>
-                                            <FacebookLogin
+                        <FacebookLogin
     appId="1088597931155576"
-    autoLoad={true}
+    autoLoad={false}
     fields="name,email,picture"
     callback={responseFacebook}
     cssClass="my-facebook-button-class"

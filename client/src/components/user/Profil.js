@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import getFormattedDate from "../../utils/getFormattedDate";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import "./blog.scss";
 import * as types from '../../actions/types';
 
 class ProfilePage extends React.Component {
@@ -17,16 +19,49 @@ class ProfilePage extends React.Component {
 const Profil = (props) => {
   return (
     <div>
-      <h1>Profile for {props.username}</h1>
+      <h1>Profile for {props.user_name}</h1>
 
       <ul>
-        <li>Email address: {props.emailAddress}</li>
+        <li>Email address: {props.email}</li>
       </ul>
     </div>
   )
 };
 
-
+const ViewProfil = ({ user, auth, onDelete, onEdit }) => {
+  return (
+     <Container className="mt-4 viewPost">
+        <Row>
+           <Col className="text-center postTitle">
+              <h2>{user.username}</h2>
+           </Col>
+        </Row>
+        <Row className="my-4" style={{ whiteSpace: "pre-wrap" }}>
+           <Col>{user.email}</Col>
+        </Row>
+        <Row className="d-flex flex-column font-italic footerStyle">
+           <Col> {user.password}</Col>
+           
+        </Row>
+        {auth && (
+           <Row className="mt-4">
+              <Col className="text-center">
+                 <Button
+                    className="mr-2"
+                    variant="outline-info"
+                    onClick={onEdit}
+                 >
+                    Edit
+                 </Button>
+                 <Button variant="outline-danger" onClick={onDelete}>
+                    Delete
+                 </Button>
+              </Col>
+           </Row>
+        )}
+     </Container>
+  );
+};
 
 Profil.propTypes = {
   username: PropTypes.string.isRequired,

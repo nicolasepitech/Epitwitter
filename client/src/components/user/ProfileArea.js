@@ -1,7 +1,7 @@
 
 import React, {PropTypes} from 'react';
 
-const ProfilArea = (props) => {
+const ProfileArea = (props) => {
   return (
     <div>
       <h1>Profile for {props.username}</h1>
@@ -13,9 +13,9 @@ const ProfilArea = (props) => {
   )
 };
 
-ProfilArea.propTypes = {
+ProfileArea.propTypes = {
   username: PropTypes.string.isRequired,
   emailAddress: PropTypes.string.isRequired
 };
 
-export default ProfilArea;
+export default ProfileArea;
