@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Input from "../form/Input";
+import ReactDOM from 'react-dom';
+import FacebookLogin from 'react-facebook-login';
 import {
    Card,
    Button,
@@ -11,6 +13,10 @@ import {
    Col,
    Alert
 } from "react-bootstrap";
+
+const responseFacebook = (response) => {
+   console.log(response);
+ }
 
 const Login = ({ message, loading, user, onChange, onBlur, onSubmit }) => {
    const { email, password, errors } = user;
@@ -68,11 +74,18 @@ const Login = ({ message, loading, user, onChange, onBlur, onSubmit }) => {
                         >
                            Submit
                         </Button>
-
                         <Card.Text className="mt-2">
                            Don't have an account?{" "}
                            <Link to={"/signup"}>SignUp</Link>
                         </Card.Text>
+                                            <FacebookLogin
+    appId="1088597931155576"
+    autoLoad={true}
+    fields="name,email,picture"
+    callback={responseFacebook}
+    cssClass="my-facebook-button-class"
+    icon="fa-facebook"
+  />
                      </Card.Body>
                   </Form>
                </Card>

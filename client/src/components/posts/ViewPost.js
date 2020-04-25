@@ -7,10 +7,18 @@ import {
    EmailShareButton,
    FacebookShareButton,
    FacebookIcon,
+   EmailIcon,
    InstapaperShareButton,
    RedditShareButton,
+   RedditIcon,
    TwitterShareButton,
+   GoogleShareButton,
+   GoogleIcon,
+   RedditShareCount,
+   FacebookShareCount
  } from "react-share";
+
+const ShareUrl="www.reddit.com/submit?url=";
 
 const ViewPost = ({ post, auth, onDelete, onEdit }) => {
    const postDate = getFormattedDate(post.date);
@@ -24,7 +32,29 @@ const ViewPost = ({ post, auth, onDelete, onEdit }) => {
           >
             <FacebookIcon size={32} round />
           </FacebookShareButton>
-         
+
+
+          <EmailShareButton
+            url=""
+            subject={post.title}
+            body={post.body}
+            className="Demo__some-network__share-button"
+          >
+            <EmailIcon size={32} round />
+          </EmailShareButton>
+
+          <RedditShareButton
+            url={ShareUrl}
+            title={post.title}
+            windowWidth={660}
+            windowHeight={460}
+            className="Demo__some-network__share-button"
+          >
+            <RedditIcon size={32} round />
+          </RedditShareButton>
+
+      
+
          <Row>
             <Col className="text-center postTitle">
                <h2>{post.title}</h2>
