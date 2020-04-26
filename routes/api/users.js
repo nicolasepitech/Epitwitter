@@ -9,6 +9,17 @@ const validateSignUpInput = require("../../validation/signup");
 const validateLoginInput = require("../../validation/login");
 const User = require("../../models/User");
 
+router.get("/user/:username", (req, res) => {
+   User.find({ _id: req.params.id })
+       .then(user_name => res.status(200).json(user_name))
+       .catch(err => res.status(400).json({ id: "Error fetching user" }));
+});
+
+router.get("/allusers", (req, res) => {
+   User.find({}).then(users => res.status(200).json(users))
+       .catch(err => res.status(400).json({users : "users not found"}))
+});
+
 router.post("/signup", (req, res) => {
    const { errors, isValid } = validateSignUpInput(req.body);
    const { user_name, email, password } = req.body;
@@ -59,7 +70,7 @@ router.post("/login", (req, res) => {
                id: user.id,
                user_name: user.user_name
             };
-            jwt.sign(payload, SECRET, { expiresIn: 3600 }, (err, token) => {
+            jwt.sign(payload, SECRET, { expiresIn: 36000 }, (err, token) => {
                if (err) {
                   console.log(err);
                }

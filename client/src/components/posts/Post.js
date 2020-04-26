@@ -8,11 +8,13 @@ const Post = ({ post }) => {
    const postDate = getFormattedDate(post.date);
    return (
       <Card className="deckStyle" style={{ border: "none" }}>
-         <Card.Body className="postCover">
-            <Card.Title className="text-center p-5">{post.title}</Card.Title>
+          <Card.Title className="text-center p-3 postCover">{post.title}</Card.Title>
+         <Card.Body className="">
+             {post.body}
          </Card.Body>
          <Card.Footer>
             <small className="text-muted">Posted on: {postDate}</small>
+             <small> by : {post.author}</small>
          </Card.Footer>
       </Card>
    );
