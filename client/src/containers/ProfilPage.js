@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Profil from "../components/user/Profil";
+import ViewProfil from "../components/user/ViewProfil";
 import { getPosts, getPostsByAuthor } from "../actions/postActions";
 
 const ProfilPage = ({
@@ -15,7 +15,7 @@ const ProfilPage = ({
       isAuthenticated ? getPosts() : getPostsByAuthor(match.params.author);
    }, [isAuthenticated, getPosts, getPostsByAuthor, match]);
 
-   return <Profil posts={posts} auth={isAuthenticated} />;
+   return <ViewProfil posts={posts} auth={isAuthenticated} />;
 };
 
 const mapStateToProps = state => ({

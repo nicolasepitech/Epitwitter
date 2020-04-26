@@ -19,7 +19,7 @@ class ProfilePage extends React.Component {
 const Profil = (props) => {
   return (
     <div>
-      <h1>Profile for {props.user_name}</h1>
+      <h1>Profile for {props.users}</h1>
 
       <ul>
         <li>Email address: {props.email}</li>
@@ -28,19 +28,19 @@ const Profil = (props) => {
   )
 };
 
-const ViewProfil = ({ user, auth, onDelete, onEdit }) => {
+const ViewProfil = ({ post, auth, onDelete, onEdit }) => {
   return (
      <Container className="mt-4 viewPost">
         <Row>
            <Col className="text-center postTitle">
-              <h2>{user.username}</h2>
+              <h2>{post.body}</h2>
            </Col>
         </Row>
         <Row className="my-4" style={{ whiteSpace: "pre-wrap" }}>
-           <Col>{user.email}</Col>
+           <Col>{post.body}</Col>
         </Row>
         <Row className="d-flex flex-column font-italic footerStyle">
-           <Col> {user.password}</Col>
+           <Col> {post.title}</Col>
            
         </Row>
         {auth && (

@@ -11,7 +11,7 @@ import LoginPage from "./containers/auth/LoginPage";
 import SignUpPage from "./containers/auth/SignUpPage";
 
 import ProfilPage from "./containers/ProfilPage"
-import ViewProfil from "./components/user/Profil"
+import ViewProfil from "./components/user/ViewProfil"
 import ProgressBar from "./containers/layout/ProgressBar";
 import Navbar from "./containers/layout/Navbar";
 import Landing from "./components/layout/Landing";
@@ -60,7 +60,7 @@ const App = () => {
                  <PrivateRoute
                   exact
                   path="/profil"
-                  component={ProfilPage}
+                  component={ViewProfil}
                />
                  <PrivateRoute
                   exact
