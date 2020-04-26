@@ -10,7 +10,7 @@ const validateLoginInput = require("../../validation/login");
 const User = require("../../models/User");
 
 router.get("/user/:username", (req, res) => {
-   User.find({ _id: req.params.id })
+   User.find({ user_name: req.params.username })
        .then(user_name => res.status(200).json(user_name))
        .catch(err => res.status(400).json({ id: "Error fetching user" }));
 });
