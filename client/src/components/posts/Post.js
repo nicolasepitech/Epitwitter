@@ -13,6 +13,7 @@ const Post = ({ post }) => {
          </Card.Body>
          <Card.Footer>
             <small className="text-muted">Posted on: {postDate}</small>
+            <small className="text-muted">        Tags: {post.tag}</small>
          </Card.Footer>
       </Card>
    );

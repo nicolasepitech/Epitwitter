@@ -5,7 +5,7 @@ import Input from "../form/Input";
 import Textarea from "../form/Textarea";
 
 const PostForm = ({ post, onChange, onBlur, loading, onSubmit }) => {
-   const { title, body, errors } = post;
+   const { title, body, tag, errors } = post;
    return (
       <Container>
          <Row>
@@ -40,6 +40,22 @@ const PostForm = ({ post, onChange, onBlur, loading, onSubmit }) => {
                         error: errors.body
                      }}
                   />
+                 <Input
+                     name="tag"
+                     class="form-control"
+                     id="tag"
+                     type="text"
+                     placeholder="Enter Tag"
+                     value={tag}
+                     onChange={onChange}
+                     onBlur={onBlur}
+                     text={{
+                        module: "post",
+                        label: "Tag",
+                        error: errors.tag
+                     }}
+                  />
+         
                   <Button
                      variant="outline-info"
                      type="submit"

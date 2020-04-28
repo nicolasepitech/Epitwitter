@@ -57,7 +57,7 @@ const Blog = ({ posts, auth }) => {
          {posts.length > 0 ? (
             <ListPost
                posts={posts.filter(post =>
-                  post.title.toLowerCase().includes(search)
+                  post.title.toLowerCase().includes(search) || post.body.toLowerCase().includes(search) || post.tag.toLowerCase().includes(search),
                )}
             />
          

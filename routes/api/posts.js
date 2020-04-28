@@ -65,15 +65,16 @@ router.patch(
    "/update/:id",
    passport.authenticate("jwt", { session: false }),
    (req, res) => {
+   
       const author = req.user.user_name;
       const { errors, isValid } = validatePostInput(req.body);
       if (!isValid) {
          return res.status(400).json(errors);
       }
-      const { title, body } = req.body;
+      const { title, body, tag } = req.body;
       Post.findOneAndUpdate(
          { author, _id: req.params.id },
-         { $set: { title, body } },
+         { $set: { title, body, tag } },
          { new: true }
       )
          .then(doc => res.status(200).json(doc))
@@ -100,4 +101,17 @@ router.delete(
    }
 );
 
+router.post('/addtag', function (req, res) {
+   var tag = req.tag;
+   post.addTag(tag,function(result){
+     res.send(result);
+   }); 
+ })
+ 
 module.exports = router;
+
+router.post('/gettag', function (req, res) {
+   post.getTag(function(result){
+     res.send(result);
+   });
+ })

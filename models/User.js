@@ -13,7 +13,8 @@ const userModel = {
    password: {
       type: String,
       required: true
-   }
+   },
+  
 };
 
 const UserSchema = new Schema(userModel);

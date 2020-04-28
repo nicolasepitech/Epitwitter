@@ -47,6 +47,21 @@ const Navigationbar = ({ auth, onClick }) => (
                </Navbar.Brand>
             </Link>
          ): (
+            <Link to="/dada">
+               <Navbar.Brand>
+            
+               </Navbar.Brand>
+            </Link>
+         )}
+   </Nav>
+   <Nav className="ml-auto">
+         {auth ? (
+            <Link to="/addtag">
+               <Navbar.Brand>
+                  <div className="mr-sm-2">Tags</div>
+               </Navbar.Brand>
+            </Link>
+         ): (
             <Link to="/profile">
                <Navbar.Brand>
             

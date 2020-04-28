@@ -66,6 +66,8 @@ export const getPostsByAuthor = author => dispatch => {
       });
 };
 
+
+
 export const getPosts = () => dispatch => {
    dispatch(togglePostsLoading());
    axios

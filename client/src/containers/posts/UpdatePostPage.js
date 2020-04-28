@@ -17,6 +17,7 @@ const UpdatePostPage = ({
    const [post, setPost] = useState({
       title: "",
       body: "",
+      tag: "",
       errors: {}
    });
 
@@ -29,6 +30,7 @@ const UpdatePostPage = ({
       setPost(post => ({
          title: currentPost.title,
          body: currentPost.body,
+         tag: currentPost.tag,
          errors: { ...post.errors }
       }));
    }, [currentPost]);
@@ -54,13 +56,13 @@ const UpdatePostPage = ({
 
    const handleSubmit = e => {
       e.preventDefault();
-      const { title, body } = post;
-      updatePost(currentPost._id, { title, body }, history);
+      const { title, body, tag } = post;
+      updatePost(currentPost._id, { title, body, tag }, history);
    };
 
    // to ensure that the post is loaded otherwise we would make uncontrolled form access error
    const isPostLoaded = () => {
-      return post.title || post.body || Object.keys(post.errors).length > 0;
+      return post.title || post.body || post.tag || Object.keys(post.errors).length > 0;
    };
 
    return isPostLoaded() ? (

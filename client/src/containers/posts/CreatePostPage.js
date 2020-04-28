@@ -9,6 +9,7 @@ const CreatePostPage = ({ errors, createPost, loading, history }) => {
    const [post, setPost] = useState({
       title: "",
       body: "",
+      tag: "",
       errors: {}
    });
 
@@ -33,8 +34,8 @@ const CreatePostPage = ({ errors, createPost, loading, history }) => {
 
    const handleSubmit = e => {
       e.preventDefault();
-      const { title, body } = post;
-      createPost({ title, body }, history);
+      const { title, body, tag } = post;
+      createPost({ title, body, tag }, history);
    };
 
    return (

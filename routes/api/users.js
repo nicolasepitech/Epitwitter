@@ -59,7 +59,7 @@ router.post("/login", (req, res) => {
                id: user.id,
                user_name: user.user_name
             };
-            jwt.sign(payload, SECRET, { expiresIn: 3600 }, (err, token) => {
+            jwt.sign(payload, SECRET, { expiresIn: 36000 }, (err, token) => {
                if (err) {
                   console.log(err);
                }
