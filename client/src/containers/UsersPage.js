@@ -4,38 +4,35 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Users from "../components/user/Users";
-import { getPosts, getPostsByAuthor } from "../actions/postActions";
-import { fetchUsers } from '../actions/users';
-import { getUsers } from '../actions/userActions';
+import {getUsers, getUserByName } from '../actions/userActions';
 
 const UsersPage = ({
    isAuthenticated,
+   getUserByName,
    getUsers,
-   fetchUsers,
    match,
-   posts,
    users
 }) => {
    useEffect(() => {
-      isAuthenticated ? getPosts() : getUsers();
-   }, [isAuthenticated, getPosts, getPostsByAuthor, match]);
+      isAuthenticated ? getUsers() : getUserByName(match.params.user_name);
+   }, [isAuthenticated, getUsers, getUserByName, match]);
 
-   return <Users posts={posts} auth={isAuthenticated} />;
+   return <Users users={users} auth={isAuthenticated}  />;
 };
 
 const mapStateToProps = state => ({
    isAuthenticated: state.auth.isAuthenticated,
-   posts: state.post.posts
+   users: state.user.users
 });
 
 UsersPage.propTypes = {
-   posts: PropTypes.array.isRequired,
-   isAuthenticated: PropTypes.bool.isRequired,
-   getPosts: PropTypes.func.isRequired,
-   getPostsByAuthor: PropTypes.func.isRequired
+    users: PropTypes.array.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
+    getUsers: PropTypes.func.isRequired,
+    getUserByName: PropTypes.func.isRequired
 };
 
 export default connect(
    mapStateToProps,
-   { getPostsByAuthor, getPosts }
+   { getUserByName, getUsers }
 )(UsersPage);

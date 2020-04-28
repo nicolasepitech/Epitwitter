@@ -4,8 +4,9 @@ import getFormattedDate from "../../utils/getFormattedDate";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import "./blog.scss";
 import * as types from '../../actions/types';
+import getUserByName from '../../actions/userActions'
 
-class ProfilePage extends React.Component {
+/*class ProfilePage extends React.Component {
 
   componentDidMount() {
     this.props.dispatch({
@@ -14,15 +15,15 @@ class ProfilePage extends React.Component {
         userId: this.props.pageState.auth.id
       }
     });
-  }}
+  }}*/
 
-const ViewProfil = (props) => {
+const ViewProfil = (user) => {
   return (
     <div>
-      <h1>Profile aaaaaaaaaa {props.users}</h1>
+      <h1>Profile aaaaaaaaaa {user.user_name}</h1>
 
       <ul>
-        <li>Email address: {props.email}</li>
+        <li>Email address: {user.email}</li>
       </ul>
     </div>
   )

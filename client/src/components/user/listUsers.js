@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Users from "./Users";
-import User from "./User";
+import Users from "./User";
 import PropTypes from "prop-types";
 import Container from "react-bootstrap/Container";
 import "./blog.scss";
@@ -11,7 +10,7 @@ const listUsers = ({ users }) => {
       <div className="grid-container mx-3">
          {users.map(user => (
             <Link to={`/users/${user._id}`} key={user._id}>
-               <Users user={user} />
+               <Users users={users} />
             </Link>
          ))}
       </div>
@@ -19,7 +18,7 @@ const listUsers = ({ users }) => {
 };
 
 listUsers.propTypes = {
-   posts: PropTypes.array.isRequired
+   users: PropTypes.array.isRequired
 };
 
 export default listUsers;

@@ -9,6 +9,17 @@ const validateSignUpInput = require("../../validation/signup");
 const validateLoginInput = require("../../validation/login");
 const User = require("../../models/User");
 
+router.get("/", (req, res) => {
+   User.find({ }).then(users => res.status(200).json(users))
+       .catch(err => res.status(400).json({users : "users not found"}))
+});
+
+router.get("/user/:username", (req, res) => {
+   User.find({ user_name: req.params.username })
+       .then(user_name => res.status(200).json(user_name))
+       .catch(err => res.status(400).json({ id: "Error fetching user" }));
+});
+
 router.post("/signup", (req, res) => {
    const { errors, isValid } = validateSignUpInput(req.body);
    const { user_name, email, password } = req.body;

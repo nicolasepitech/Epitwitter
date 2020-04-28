@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import { Nav, Button, Container, Form } from "react-bootstrap";
 import listUsers from "../user/listUsers";
 import "./blog.scss";
@@ -20,17 +19,15 @@ const Users = ({ users, auth }) => {
          if (users === 0) setDisplay(true);
       }, 1000);
    }, [users]);
-
    return (
       <React.Fragment>
          <div className="mx-3">
             <Nav className="mt-2 mb-2 float-right">
-         
                <Form>
                   <Form.Group controlId="searchBar">
                      <Form.Control
                         type="text"
-                        placeholder="Lalala"
+                        placeholder="LalalO"
                         style={{ height: 40 }}
                         ref={inputRef}
                         onChange={handleChange}
@@ -42,7 +39,7 @@ const Users = ({ users, auth }) => {
          {users > 0 ? (
             <listUsers
                users={users.filter(user =>
-                  user.title.toLowerCase().includes(search)
+                  user.user_name.toLowerCase().includes(search)
                )}
             />
          ) : (
@@ -52,7 +49,7 @@ const Users = ({ users, auth }) => {
                   className="d-flex flex-column justify-content-center align-items-center"
                >
                   {" "}
-                  <p className="text-secondary h3">No Post Found !</p>
+                  <p className="text-secondary h3">No User Found !</p>
                </Container>
             )
          )}
@@ -61,8 +58,8 @@ const Users = ({ users, auth }) => {
 };
 
 Users.propTypes = {
-   auth: PropTypes.bool.isRequired,
-   posts: PropTypes.array.isRequired
+    auth: PropTypes.bool.isRequired,
+    users: PropTypes.array.isRequired
 };
 
 export default Users;
